@@ -17,7 +17,7 @@ import {
   CarService,
   CarUpdateData,
   NewCar,
-} from '../../../../../proto/build/car';
+} from '../../../../proto/build/car';
 import { ClientGrpc } from '@nestjs/microservices';
 import { promisify } from '../../utils';
 import {

@@ -10,7 +10,7 @@ import {
 import { CreateNewUserDto } from './dto/create.user.dto';
 import { LoginUserDto } from './dto/login.dto';
 import { WalletProviderService } from '../wallet/wallet.service';
-import { AuthService, LoginResponse } from '../../../../../proto/build/auth';
+import { AuthService, LoginResponse } from '../../../../proto/build/auth';
 import { ClientGrpc } from '@nestjs/microservices';
 import { promisify } from '../../utils';
 import { SignupResponse } from './interfaces/signup.response';

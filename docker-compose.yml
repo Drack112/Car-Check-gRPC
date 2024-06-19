@@ -1,5 +1,4 @@
 services:
-
   gateway-service:
     container_name: "gateway-service"
     build:
@@ -8,8 +7,8 @@ services:
     env_file:
       - ./client/.env
     ports:
-      - '3000:6000'
-    command: [ 'node', '/home/client/app/dist/client/app/src/main.js' ]
+      - "3000:4000"
+    command: ["node", "/home/client/app/dist/client/app/src/main.js"]
     depends_on:
       - order-service
       - wallet-service
@@ -17,7 +16,6 @@ services:
       - car-service
       - user-service
       - email-service
-
 
   order-service:
     container_name: "order-service-nest"
@@ -27,8 +25,9 @@ services:
     env_file:
       - ./microservices/order-service/.env
     ports:
-      - '4503:4503'
-    command: [ 'node', '/home/order-service/app/dist/order-service/app/src/main.js' ]
+      - "4503:4503"
+    command:
+      ["node", "/home/order-service/app/dist/order-service/app/src/main.js"]
     depends_on:
       - wallet-service
       - authentication-service
@@ -47,8 +46,9 @@ services:
     env_file:
       - ./microservices/wallet-service/.env
     ports:
-      - '4500:4500'
-    command: [ 'node', '/home/wallet-service/app/dist/wallet-service/app/src/main.js' ]
+      - "4500:4500"
+    command:
+      ["node", "/home/wallet-service/app/dist/wallet-service/app/src/main.js"]
     depends_on:
       - authentication-service
       - car-service
@@ -58,7 +58,6 @@ services:
     networks:
       - nest-microservices
 
-
   authentication-service:
     container_name: "authentication-service-nest"
     build:
@@ -67,8 +66,12 @@ services:
     env_file:
       - ./microservices/authentication-service/.env
     ports:
-      - '5302:5302'
-    command: [ 'node', '/home/authentication-service/app/dist/authentication-service/app/src/main.js' ]
+      - "5302:5302"
+    command:
+      [
+        "node",
+        "/home/authentication-service/app/dist/authentication-service/app/src/main.js",
+      ]
     depends_on:
       - car-service
       - user-service
@@ -85,8 +88,8 @@ services:
     env_file:
       - ./microservices/car-service/.env
     ports:
-      - '4507:4507'
-    command: [ 'node', '/home/car-service/app/dist/car-service/app/src/main.js' ]
+      - "4507:4507"
+    command: ["node", "/home/car-service/app/dist/car-service/app/src/main.js"]
     depends_on:
       - user-service
       - email-service
@@ -102,14 +105,14 @@ services:
     env_file:
       - ./microservices/user-service/.env
     ports:
-      - '4502:4502'
-    command: [ 'node', '/home/user-service/app/dist/user-service/app/src/main.js' ]
+      - "4502:4502"
+    command:
+      ["node", "/home/user-service/app/dist/user-service/app/src/main.js"]
     depends_on:
       - email-service
       - db
     networks:
       - nest-microservices
-
 
   email-service:
     container_name: "email-service-nest"
@@ -119,8 +122,12 @@ services:
     env_file:
       - ./microservices/notification-service/.env
     ports:
-      - '4504:4504'
-    command: [ 'node', '/home/notification-service/app/dist/microservices/notification-service/src/main.js' ]
+      - "4504:4504"
+    command:
+      [
+        "node",
+        "/home/notification-service/app/dist/notification-service/app/src/main.js",
+      ]
     depends_on:
       - redis
     networks:
@@ -128,7 +135,7 @@ services:
 
   mailhog:
     image: mailhog/mailhog
-    container_name: 'mailhog-server'
+    container_name: "mailhog-server"
     ports:
       - "1025:1025"
       - "8025:8025"
@@ -152,7 +159,6 @@ services:
       - "6379:6739"
     networks:
       - nest-microservices
-
 
 networks:
   nest-microservices:

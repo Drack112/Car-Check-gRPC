@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
 import { ClientGrpc } from '@nestjs/microservices';
-import { UserService } from '../../../../proto/build/user';
+import { UserService } from '../../../proto/build/user';
 import { promisify } from '../utils';
 import { Inject, Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response } from 'express';

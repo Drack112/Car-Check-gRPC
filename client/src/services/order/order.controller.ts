@@ -12,7 +12,7 @@ import {
   NewOrder,
   OrderList,
   OrderService,
-} from '../../../../../proto/build/order';
+} from '../../../../proto/build/order';
 import { ClientGrpc } from '@nestjs/microservices';
 import { promisify } from '../../utils';
 import {

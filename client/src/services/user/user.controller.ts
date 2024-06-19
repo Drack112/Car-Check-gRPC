@@ -11,11 +11,8 @@ import {
 } from '@nestjs/common';
 import { WalletAmountDto } from './dto/amount.dto';
 import { WalletProviderService } from '../wallet/wallet.service';
-import { UserService } from '../../../../../proto/build/user';
-import {
-  TransactDetails,
-  WalletDetails,
-} from '../../../../../proto/build/wallet';
+import { UserService } from '../../../../proto/build/user';
+import { TransactDetails, WalletDetails } from '../../../../proto/build/wallet';
 import { ClientGrpc } from '@nestjs/microservices';
 import { UserData } from './interfaces/user.interface';
 import { promisify } from '../../utils';

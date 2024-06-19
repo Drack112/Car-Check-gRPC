@@ -6,7 +6,7 @@ import {
   TransactDetails,
   WalletDetails,
   WalletService,
-} from '../../../../../proto/build/wallet';
+} from '../../../../proto/build/wallet';
 import { promisify } from '../../utils';
 
 @Injectable()
